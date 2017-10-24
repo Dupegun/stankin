@@ -31,6 +31,8 @@ int main()
     string key;
     cout<<"size of array? ";
     cin>>N;
+    if(N>0)
+  {
     int* a = new int[N];
     cout<<'\n'<<" elements of arrray? ";
     for(int i=0; i<N; i++)
@@ -45,5 +47,7 @@ int main()
     	justdoit(a, N, mult);
     else if (key=="max")
 	    justdoit(a, N, maxx);
+   }
+    else cout<<"incorrect size";
     return 0;
 }
