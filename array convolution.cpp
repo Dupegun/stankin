@@ -31,7 +31,7 @@ int main()
     string key;
     cout<<"size of array? ";
     cin>>N;
-    if(N>0)
+    if(N>1)
   {
     int* a = new int[N];
     cout<<'\n'<<" elements of arrray? ";
