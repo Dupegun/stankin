@@ -17,7 +17,7 @@ int maxx(int a, int b)
 {
 	return (a>b)? a: b;
 }
-void justdoit(int* arr, unsigned size,int(*func)(int, int)) //функция свертки массива
+void justdoit(int* arr, int size,int(*func)(int, int)) //функция свертки массива
 {
     int result=func(arr[0], arr[1]);
     for(int i=2; i<size; i++)
