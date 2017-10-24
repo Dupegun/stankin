@@ -15,7 +15,7 @@ int mult(int a, int b)
 }
 int maxx(int a, int b)
 {
-	retun (a>b)? a: b;
+	return (a>b)? a: b;
 }
 void justdoit(int* arr, unsigned size,int(*func)(int, int)) //функция свертки массива
 {
