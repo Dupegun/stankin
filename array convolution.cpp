@@ -13,6 +13,10 @@ int mult(int a, int b)
 {
 	return a*b;
 }
+int maxx(int a, int b)
+{
+	retun (a>b)? a: b;
+}
 void justdoit(int* arr, unsigned size,int(*func)(int, int)) //функция свертки массива
 {
     int result=func(arr[0], arr[1]);
@@ -31,13 +35,15 @@ int main()
     cout<<'\n'<<" elements of arrray? ";
     for(int i=0; i<N; i++)
         cin>>a[i];
-    cout<<"operation? (sum, div, mult) ";
+    cout<<"operation? (sum, div, mult, max) ";
     cin>>key;
     if(key=="sum")
-    justdoit(a, N, sum);
+    	justdoit(a, N, sum);
     else if (key=="div")
-    justdoit(a, N, mydiv);
-        else if (key=="mult")
-    justdoit(a, N, mult);
+    	justdoit(a, N, mydiv);
+    else if (key=="mult")
+    	justdoit(a, N, mult);
+    else if (key=="max")
+	    justdoit(a, N, maxx);
     return 0;
 }
