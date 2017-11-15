@@ -16,7 +16,7 @@ int main()
   for(int i=0; i<N; i++)
       for(int j=0; j<N; j++)
       {
-		  int temp;
+	  int temp;
           fin>>temp;
           if(i==0 && j==0)
               minDist[0][0]=temp;
