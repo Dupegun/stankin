@@ -34,6 +34,4 @@ private:
 
 	//variable health points
 	int hp;
-
-	enum ShipState { Dead, Damaged, Alive };
 };
