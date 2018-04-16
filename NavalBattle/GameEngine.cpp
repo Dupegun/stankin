@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "GameEngine.h"
+#include <ctime>
 
 
 GameEngine::GameEngine()
@@ -15,6 +16,7 @@ GameEngine::~GameEngine()
 
 void GameEngine::ShipsInit()
 {
+	//default init
 	ships[0].SetLocation(0, 0);
 	ships[1].SetLocation(0, 9);
 	ships[2].SetLocation(9, 0);
@@ -28,6 +30,19 @@ void GameEngine::ShipsInit()
 	ships[8].SetLocation(9, 2, 9, 3, 9, 4);
 
 	ships[9].SetLocation(9, 7, 8, 7, 7, 7, 6, 7);
+	
+	srand(time(NULL) | clock() );
+	int RotateThem = rand() % 2;
+	int MirThem = rand() % 2;
+	int MirDir = rand() % 2;
+	
+	for (int i = 0; i < 10; i++)
+	{
+		if(RotateThem==1)
+			ships[i].RotateLocation();
+		if (MirThem==1)
+			ships[i].MirroringLocation(MirDir);
+	}
 }
 
 void GameEngine::MapInit()
