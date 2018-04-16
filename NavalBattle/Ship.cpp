@@ -96,6 +96,65 @@ std::vector<Point>* Ship::GetLocation()
 	return &location;
 }
 
+void Ship::RotateLocation()
+{
+	int RotationMatrix[2][2] = { { 0, -1 },{ 1, 0 } };
+	int LocationMatrix[2][4];
+	int product[2][4];
+
+	for (int i=0; i<2; i++)
+		for (int j=0; j<4; j++)
+			product[i][j]=0;
+
+	//init location matrix
+	for (size_t j = 0; j < location.size(); j++)
+	{
+		LocationMatrix[0][j] = location[j].x;
+	}
+
+	for (size_t j = 0; j < location.size(); j++)
+	{
+		LocationMatrix[1][j] = location[j].y;
+	}
+
+	for (size_t row = 0; row < 2; row++) {
+		for (size_t col = 0; col < location.size(); col++) {
+			for (int inner = 0; inner < 2; inner++) {
+				product[row][col] += RotationMatrix[row][inner] * LocationMatrix[inner][col];
+			}
+		}
+	}
+
+	//Re-init location
+	for (size_t j = 0; j < location.size(); j++)
+	{
+		 location[j].x=abs(product[0][j]);
+	}
+
+	for (size_t j = 0; j < location.size(); j++)
+	{
+		location[j].y= abs(product[1][j]);
+	}
+}
+
+void Ship::MirroringLocation(int axis)
+{	
+	if (axis==0)
+	{
+		for (size_t i = 0; i < location.size(); i++)
+		{
+			location[i].x = 9 - location[i].x;
+		}
+	}
+	else if (axis==1)
+	{
+		for (size_t i = 0; i < location.size(); i++)
+		{
+			location[i].y = 9 - location[i].y;
+		}
+	}
+}
+
 int Ship::GetHP()
 {
 	return hp;
