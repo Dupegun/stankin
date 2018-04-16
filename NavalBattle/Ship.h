@@ -18,6 +18,19 @@ public:
 
 	std::vector<Point>* GetLocation();
 
+	/*Turns the position of the ship on 90 degrees counter-clockwise
+	relative to the coordinates origin and take abs()
+	*/
+	void RotateLocation();
+
+
+	/*Reflects relative to the middle of the
+	axis=0 ---- x-axis
+	axis=1 ---- y-axis
+	*/
+	void MirroringLocation(int axis);
+
+
 	int GetHP();
 
 	void DecHP();
@@ -34,4 +47,6 @@ private:
 
 	//variable health points
 	int hp;
+
+	size_t ShipSize;
 };
