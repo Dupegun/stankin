@@ -30,7 +30,6 @@ public:
 	*/
 	void MirroringLocation(int axis);
 
-
 	int GetHP();
 
 	void DecHP();
