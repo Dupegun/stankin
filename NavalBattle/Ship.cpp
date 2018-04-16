@@ -16,6 +16,7 @@ void Ship::SetLocation(int x, int y)
 
 	Starter_HP = 1;
 	hp = Starter_HP;
+	ShipSize = Starter_HP;
 }
 
 void Ship::SetLocation(int x, int y, int x1, int y1)
@@ -34,6 +35,7 @@ void Ship::SetLocation(int x, int y, int x1, int y1)
 
 	Starter_HP = 2;
 	hp = Starter_HP;
+	ShipSize = Starter_HP;
 }
 
 void Ship::SetLocation(int x, int y, int x1, int y1, int x2, int y2)
@@ -57,6 +59,7 @@ void Ship::SetLocation(int x, int y, int x1, int y1, int x2, int y2)
 
 	Starter_HP = 3;
 	hp = Starter_HP;
+	ShipSize = Starter_HP;
 }
 
 void Ship::SetLocation(int x, int y, int x1, int y1, int x2, int y2, int x3, int y3)
@@ -85,6 +88,7 @@ void Ship::SetLocation(int x, int y, int x1, int y1, int x2, int y2, int x3, int
 
 	Starter_HP = 4;
 	hp = Starter_HP;
+	ShipSize = Starter_HP;
 }
 
 Ship::~Ship()
@@ -102,23 +106,26 @@ void Ship::RotateLocation()
 	int LocationMatrix[2][4];
 	int product[2][4];
 
-	for (int i=0; i<2; i++)
-		for (int j=0; j<4; j++)
-			product[i][j]=0;
+	for (int i = 0; i<2; i++)
+		for (int j = 0; j<4; j++)
+			product[i][j] = 0;
+
+	//int max = location.size();
+	int max = ShipSize;
 
 	//init location matrix
-	for (size_t j = 0; j < location.size(); j++)
+	for (size_t j = 0; j < max; j++)
 	{
 		LocationMatrix[0][j] = location[j].x;
 	}
 
-	for (size_t j = 0; j < location.size(); j++)
+	for (size_t j = 0; j < max; j++)
 	{
 		LocationMatrix[1][j] = location[j].y;
 	}
 
 	for (size_t row = 0; row < 2; row++) {
-		for (size_t col = 0; col < location.size(); col++) {
+		for (size_t col = 0; col < max; col++) {
 			for (int inner = 0; inner < 2; inner++) {
 				product[row][col] += RotationMatrix[row][inner] * LocationMatrix[inner][col];
 			}
@@ -126,27 +133,27 @@ void Ship::RotateLocation()
 	}
 
 	//Re-init location
-	for (size_t j = 0; j < location.size(); j++)
+	for (size_t j = 0; j < max; j++)
 	{
-		 location[j].x=abs(product[0][j]);
+		location[j].x = abs(product[0][j]);
 	}
 
-	for (size_t j = 0; j < location.size(); j++)
+	for (size_t j = 0; j < max; j++)
 	{
-		location[j].y= abs(product[1][j]);
+		location[j].y = abs(product[1][j]);
 	}
 }
 
 void Ship::MirroringLocation(int axis)
-{	
-	if (axis==0)
+{
+	if (axis == 0)
 	{
 		for (size_t i = 0; i < location.size(); i++)
 		{
 			location[i].x = 9 - location[i].x;
 		}
 	}
-	else if (axis==1)
+	else if (axis == 1)
 	{
 		for (size_t i = 0; i < location.size(); i++)
 		{
@@ -172,7 +179,7 @@ bool Ship::IsDeck(int x, int y)
 {
 	for (size_t i = 0; i < location.size(); i++)
 	{
-		if(x==location[i].x && y==location[i].y)
+		if (x == location[i].x && y == location[i].y)
 		{
 			return true;
 		}
